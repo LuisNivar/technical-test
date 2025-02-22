@@ -1,5 +1,6 @@
 import "./App.css";
 import Item from "./components/Item";
+import { TaskForm } from "./components/TaskForm";
 import { useTasks } from "./hooks/useTasks";
 
 export type TaskType = {
@@ -18,7 +19,6 @@ function App() {
     const isInput = input instanceof HTMLInputElement;
 
     if (!isInput || input === null) return;
-    if (input.value.trim() === "") return;
 
     AddTask(input.value);
 
@@ -35,17 +35,7 @@ function App() {
         <h1>TODO List</h1>
         <p>Add task to do that can be deleted</p>
 
-        <form onSubmit={handleSubmit} aria-label="Add items">
-          <label htmlFor="input">
-            <input
-              type="text"
-              name="input"
-              id="input"
-              placeholder="Do the laundry..."
-            />
-          </label>
-          <button>Add task</button>
-        </form>
+        <TaskForm onSubmit={handleSubmit} />
       </aside>
 
       <section>
@@ -59,7 +49,7 @@ function App() {
               <Item
                 key={task.id}
                 {...task}
-                onClick={createHandleRemove(task.id)}
+                onRemove={createHandleRemove(task.id)}
               />
             ))}
           </ul>
