@@ -1,11 +1,11 @@
 import { TaskType } from "../App";
 
-type ItemProps = TaskType & { onClick: () => void };
-export default function Item({ text, onClick }: ItemProps) {
+type ItemProps = TaskType & { onRemove: () => void };
+export default function Item({ text, onRemove }: ItemProps) {
   return (
     <li>
       {text}
-      <button onClick={onClick}>🗑️</button>
+      <button onClick={onRemove}>🗑️</button>
     </li>
   );
 }
