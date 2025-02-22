@@ -1,0 +1,32 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+main {
+  display: flex;
+  gap: 48px;
+}
+
+form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form input {
+  width: 60%;
+}
+
+li {
+  padding: 4px 0;
+  cursor: default;
+}
+
+li button {
+  margin-left: 8px;
+  padding-inline: 8px;
+  font-size: 14px;
+}
