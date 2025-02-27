@@ -14,4 +14,8 @@
 
 -[x] Show an image image related at the first three words of the fact.
 
--[ ] Center all content in one column.
+-[x] Center all content in one column.
+
+-[x] Add refresh button
+
+-[ ] Refactor
