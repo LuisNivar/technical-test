@@ -18,4 +18,4 @@
 
 -[x] Add refresh button
 
--[ ] Refactor
+-[x] Refactor

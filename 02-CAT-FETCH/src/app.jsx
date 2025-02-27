@@ -1,42 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
-
-const CAT_ENDPOINT_RANDOM_FACT = "https://catfact.ninja/fact";
-const CAT_ENDPOINT_RANDOM_IMG = "https://cataas.com/cat/says/";
+import { useCatFat } from "./hooks/useCatFat";
+import { useCatImgUrl } from "./hooks/useCatImgUrl";
 
 export function App() {
-  const [fatCat, setFactCat] = useState("");
-  const [imgUrl, setImgUrl] = useState("");
+  const { fatCat, refreshCatFact } = useCatFat();
+  const { imgUrl } = useCatImgUrl({ fatCat });
 
-  useEffect(getRandomFact, []);
+  useEffect(refreshCatFact, []);
 
-  useEffect(() => {
-    if (!fatCat) return;
-
-    const firstThreeWords = fatCat.split(" ", 3).join(" ");
-
-    fetch(
-      `${CAT_ENDPOINT_RANDOM_IMG}${firstThreeWords}?size=50&fontSize=50&json=true`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        const { url } = data;
-        setImgUrl(url);
-      });
-  }, [fatCat]);
-
-  function handleClick() {
-    getRandomFact();
-  }
-
-  function getRandomFact() {
-    fetch(CAT_ENDPOINT_RANDOM_FACT)
-      .then((res) => res.json())
-      .then((data) => {
-        const { fact } = data;
-        setFactCat(fact);
-      });
-  }
+  const handleClick = () => {
+    refreshCatFact();
+  };
 
   return (
     <main>
