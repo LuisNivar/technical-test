@@ -8,14 +8,7 @@ export function App() {
   const [fatCat, setFactCat] = useState("");
   const [imgUrl, setImgUrl] = useState("");
 
-  useEffect(() => {
-    fetch(CAT_ENDPOINT_RANDOM_FACT)
-      .then((res) => res.json())
-      .then((data) => {
-        const { fact } = data;
-        setFactCat(fact);
-      });
-  }, []);
+  useEffect(getRandomFact, []);
 
   useEffect(() => {
     if (!fatCat) return;
@@ -32,6 +25,19 @@ export function App() {
       });
   }, [fatCat]);
 
+  function handleClick() {
+    getRandomFact();
+  }
+
+  function getRandomFact() {
+    fetch(CAT_ENDPOINT_RANDOM_FACT)
+      .then((res) => res.json())
+      .then((data) => {
+        const { fact } = data;
+        setFactCat(fact);
+      });
+  }
+
   return (
     <main>
       <h1>Cat Fat</h1>
@@ -42,6 +48,7 @@ export function App() {
           alt={`A cat image related at the first three words of «${fatCat}».`}
         />
       )}
+      <button onClick={handleClick}>Refresh Fact 🔃</button>
     </main>
   );
 }

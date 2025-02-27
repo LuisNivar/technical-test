@@ -8,6 +8,19 @@ main {
 }
 
 img {
-  height: 250px;
+  height: 200px;
   width: auto;
+}
+
+button {
+  background-color: #333;
+  border-radius: 4px;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all ease-in-out 150ms;
+}
+
+button:hover {
+  background-color: #444;
 }
