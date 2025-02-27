@@ -1,4 +1,4 @@
-# Prueba técnica para Juniors y Trainees de React en Live Coding.
+# Technical test for React Juniors and Trainees in Live Coding.
 
 ## APIs:
 
@@ -6,10 +6,12 @@
 
 - Imagen random: https://cataas.com/cat/says/hello
 
-## Requerimientos
+## Requirements
 
--[ ] Recupera un hecho aleatorio de gatos de la primera API
+-[x] Retrieves a random cat fact from the first API.
 
--[ ] Recuperar la primera palabra del hecho
+-[x] Retrieves the three first of the fact.
 
--[ ] Muestra una imagen de un gato con la primera palabra.
+-[x] Show an image image related at the first three words of the fact.
+
+-[ ] Center all content in one column.

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import "./App.css";
 
 const CAT_ENDPOINT_RANDOM_FACT = "https://catfact.ninja/fact";
 const CAT_ENDPOINT_RANDOM_IMG = "https://cataas.com/cat/says/";
 
 export function App() {
   const [fatCat, setFactCat] = useState("");
-  const [imgCat, setImgCat] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
 
   useEffect(() => {
     fetch(CAT_ENDPOINT_RANDOM_FACT)
@@ -21,11 +22,13 @@ export function App() {
 
     const firstThreeWords = fatCat.split(" ", 3).join(" ");
 
-    fetch(`${CAT_ENDPOINT_RANDOM_IMG}${firstThreeWords}?size=50&json=true`)
+    fetch(
+      `${CAT_ENDPOINT_RANDOM_IMG}${firstThreeWords}?size=50&fontSize=50&json=true`
+    )
       .then((res) => res.json())
       .then((data) => {
         const { url } = data;
-        setImgCat(url);
+        setImgUrl(url);
       });
   }, [fatCat]);
 
@@ -33,7 +36,12 @@ export function App() {
     <main>
       <h1>Cat Fat</h1>
       {fatCat && <p>{fatCat}</p>}
-      {imgCat && <img src={imgCat} alt={imgCat} />}
+      {imgUrl && (
+        <img
+          src={imgUrl}
+          alt={`A cat image related at the first three words of «${fatCat}».`}
+        />
+      )}
     </main>
   );
 }
