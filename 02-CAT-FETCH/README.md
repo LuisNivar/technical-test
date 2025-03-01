@@ -8,19 +8,19 @@
 
 ## Requirements
 
--[x] Retrieves a random cat fact from the first API.
+- [x] Retrieves a random cat fact from the first API.
 
--[x] Retrieves the three first of the fact.
+- [x] Retrieves the three first of the fact.
 
--[x] Show an image image related at the first three words of the fact.
+- [x] Show an image image related at the first three words of the fact.
 
--[x] Center all content in one column.
+- [x] Center all content in one column.
 
--[x] Add refresh button.
+- [x] Add refresh button.
 
--[x] Refactor.
+- [x] Refactor.
 
--[x] Minimal test (e2e).
+- [x] Minimal test (e2e).
 
 ## Install and config ESLint
 
