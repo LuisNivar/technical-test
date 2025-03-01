@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import { useCatFat } from "./hooks/useCatFat";
 import { useCatImgUrl } from "./hooks/useCatImgUrl";
+import React from "react";
 
 export function App() {
   const { fatCat, refreshCatFact } = useCatFat();

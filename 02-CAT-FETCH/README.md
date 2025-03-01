@@ -16,6 +16,29 @@
 
 -[x] Center all content in one column.
 
--[x] Add refresh button
+-[x] Add refresh button.
 
--[x] Refactor
+-[x] Refactor.
+
+-[x] Minimal test (e2e).
+
+## Install and config ESLint
+
+- npm i eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react -D
+- npx eslint --init
+- create .eslintrc.json
+
+```json
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/react-in-jsx-scope": "off"
+  }
+}
+```
