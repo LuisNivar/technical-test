@@ -1,6 +1,10 @@
 import "./App.css";
+import { Movies } from "./components/Movies";
+import { useMovies } from "./hooks/useMovies";
 
 function App() {
+  const { movies } = useMovies();
+
   return (
     <div className="App">
       <header>
@@ -8,17 +12,13 @@ function App() {
           <input
             type="text"
             name="search"
-            id="search"
             placeholder="Pirates of the Caribbean..."
           />
           <button>Search 🔎</button>
         </form>
       </header>
       <main>
-        <ul>
-          <li>Movie 1</li>
-          <li>Movie 2</li>
-        </ul>
+        <Movies movies={movies} />
       </main>
     </div>
   );
