@@ -20,6 +20,8 @@ Primera iteración:
 
 - [x] Evitar que se haga la misma búsqueda dos veces seguidas.
 
-- [ ] Haz que la búsqueda se haga automáticamente al escribir.
+- [x] Ordenar las peliculas por título A-Z.
+
+- [x] Haz que la búsqueda se haga automáticamente al escribir.
 
 - [ ] Evita que se haga la búsqueda continuamente al escribir (debounce)
