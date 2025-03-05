@@ -5,12 +5,12 @@ import { useSearch } from "./hooks/useSearch";
 
 function App() {
   const { error, search, setSearch } = useSearch();
-  const { movies, updateMovies } = useMovies({ search });
+  const { movies, updateMovies, isLoading } = useMovies({ search });
 
   const handleSubmit = (event) => {
     event.preventDefault();
     updateMovies();
-    console.log(search);
+    console.log({ search });
 
     // const { search } = Object.fromEntries(new window.FormData(event.target));
   };
@@ -36,7 +36,7 @@ function App() {
         <p className="error-msg">{error ?? " "} </p>
       </header>
       <main>
-        <Movies movies={movies} />
+        {isLoading ? <p>Loading movies...</p> : <Movies movies={movies} />}
       </main>
     </div>
   );

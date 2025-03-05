@@ -1,21 +1,23 @@
 import { useState } from "react";
-import { mappedMovies } from "../services/movies";
-import withoutResults from "../mocks/without-result.json";
-import { API_KEY, API_URL } from "../config";
+import { searchMovie } from "../services/movies";
 
 export function useMovies({ search }) {
-  const [responseMovies, setResponseMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const movies = mappedMovies({ responseMovies });
+  const updateMovies = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
 
-  const updateMovies = () => {
-    if (search) {
-      fetch(`${API_URL}?apikey=${API_KEY}&s=${search}`)
-        .then((res) => res.json())
-        .then((json) => setResponseMovies(json));
-    } else {
-      setResponseMovies(withoutResults);
+      const newMovie = await searchMovie({ search });
+      setMovies(newMovie);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
-  return { movies, updateMovies };
+  return { movies, error, isLoading, updateMovies };
 }
