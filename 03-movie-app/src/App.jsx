@@ -1,21 +1,38 @@
 import "./App.css";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
+import { useSearch } from "./hooks/useSearch";
 
 function App() {
+  const { error, search, setSearch } = useSearch();
   const { movies } = useMovies();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(search);
+
+    // const { search } = Object.fromEntries(new window.FormData(event.target));
+  };
+
+  const handleChange = (event) => {
+    const newSearch = event.target.value;
+    if (newSearch.startsWith(" ")) return;
+    setSearch(newSearch);
+  };
 
   return (
     <div className="App">
       <header>
-        <form className="search-form">
+        <form onSubmit={handleSubmit} className="search-form">
           <input
-            type="text"
             name="search"
+            value={search}
+            onChange={handleChange}
             placeholder="Pirates of the Caribbean..."
           />
-          <button>Search 🔎</button>
+          <button type="submit">Search 🔎</button>
         </form>
+        <p className="error-msg">{error ?? " "} </p>
       </header>
       <main>
         <Movies movies={movies} />
