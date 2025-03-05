@@ -14,7 +14,7 @@ API a usar: - https://www.omdbapi.com/ Consigue la API Key en la propia página 
 
 - [x] Haz que las películas se muestren en un grid responsive.
 
-- [ ] Hacer el fetching de datos a la API
+- [x] Hacer el fetching de datos a la API
 
 Primera iteración:
 
