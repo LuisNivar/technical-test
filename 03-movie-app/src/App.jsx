@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
 import { useSearch } from "./hooks/useSearch";
+import debounce from "just-debounce-it";
 
 function App() {
   const [sort, setSort] = useState(false);
@@ -17,12 +18,21 @@ function App() {
     // const { search } = Object.fromEntries(new window.FormData(event.target));
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debounceUpdateChange = useCallback(
+    debounce((search) => {
+      updateMovies({ search });
+      console.log({ search });
+    }, 300),
+    []
+  );
+
   const handleChange = (event) => {
     const newSearch = event.target.value;
     if (newSearch.startsWith(" ")) return;
 
     setSearch(newSearch);
-    updateMovies({ search: newSearch });
+    debounceUpdateChange(newSearch);
   };
 
   const handleSort = () => {
