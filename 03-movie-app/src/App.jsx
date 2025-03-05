@@ -5,10 +5,11 @@ import { useSearch } from "./hooks/useSearch";
 
 function App() {
   const { error, search, setSearch } = useSearch();
-  const { movies } = useMovies();
+  const { movies, updateMovies } = useMovies({ search });
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    updateMovies();
     console.log(search);
 
     // const { search } = Object.fromEntries(new window.FormData(event.target));

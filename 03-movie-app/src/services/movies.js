@@ -1,10 +1,7 @@
-import withResults from "../mocks/with-results.json";
+export function mappedMovies({ responseMovies }) {
+  if (!responseMovies.Search) return [];
 
-//import withoutResults from "./mocks/without-result.json"
-
-export function getMovies() {
-  const movies = withResults.Search;
-
+  const movies = responseMovies.Search;
   if (movies.length === 0) return [];
 
   // Mapped
