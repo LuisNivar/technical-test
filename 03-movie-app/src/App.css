@@ -25,6 +25,13 @@ li h3 {
 form {
   display: flex;
   gap: 16px;
+  align-items: center;
+}
+
+.sort {
+  display: flex;
+  gap: 4px;
+  align-items: center;
 }
 
 .App {
