@@ -1,0 +1,22 @@
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background-color: #333333;
+  border-radius: 8px;
+}
+
+.product > img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
