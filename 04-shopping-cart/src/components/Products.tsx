@@ -1,15 +1,36 @@
-import WithResult from "../mocks/products.json";
-import "../products.css";
+import { useProduct } from "../hooks/useProducts";
 import { Item } from "./Item";
+import "../products.css";
+import { FilterType, ProductType } from "../type";
 
-export function Products() {
-  const products = WithResult;
+export type ProductsProps = {
+  filter: FilterType;
+};
 
+export function Products({ filter }: ProductsProps) {
+  const { products } = useProduct({ filter });
+
+  return products.length > 0 ? (
+    <ListOfProducts products={products} />
+  ) : (
+    <NoProducts />
+  );
+}
+
+function NoProducts() {
+  return <p>Products not found.</p>;
+}
+
+type ListOfProductsProps = {
+  products: ProductType[];
+};
+
+function ListOfProducts({ products }: ListOfProductsProps) {
   return (
     <ul className="products">
       {products.map((product) => {
-        const { title, image, price } = product;
-        return <Item title={title} image={image} price={price} />;
+        const { id, title, image, price } = product;
+        return <Item key={id} title={title} image={image} price={price} />;
       })}
     </ul>
   );
