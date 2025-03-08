@@ -1,11 +1,13 @@
-import { useState } from "react";
 import { FilterType } from "../type";
+import { useFilterContext } from "./useFilterContext";
+
+export const INITIAL_FILTER: FilterType = {
+  category: "all",
+  max: 100,
+};
 
 export function useFilter() {
-  const [filter, setFilter] = useState<FilterType>({
-    max: 100,
-    category: "all",
-  });
+  const { filter, setFilter } = useFilterContext();
 
   const updateMaxValue = (value: number) => {
     setFilter((prevState) => ({ ...prevState, max: value }));

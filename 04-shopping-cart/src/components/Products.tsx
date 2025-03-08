@@ -1,13 +1,11 @@
+import { useFilterContext } from "../hooks/useFilterContext";
 import { useProduct } from "../hooks/useProducts";
+import "../styles/products.css";
+import { ProductType } from "../type";
 import { Item } from "./Item";
-import "../products.css";
-import { FilterType, ProductType } from "../type";
 
-export type ProductsProps = {
-  filter: FilterType;
-};
-
-export function Products({ filter }: ProductsProps) {
+export function Products() {
+  const { filter } = useFilterContext();
   const { products } = useProduct({ filter });
 
   return products.length > 0 ? (
