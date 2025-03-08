@@ -1,7 +1,6 @@
+import { Filters } from "./components/filter";
 import { Products } from "./components/Products";
 import "./styles/App.css";
-
-import { Filters } from "./components/Filters";
 
 function App() {
   return (
