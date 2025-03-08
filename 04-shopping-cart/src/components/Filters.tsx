@@ -1,16 +1,14 @@
 import { useId } from "react";
-import { FiltersProps } from "../type";
-import "../filters.css";
+import { useFilter } from "../hooks/useFilter";
+import "../styles/filters.css";
 
-export function Filters({
-  filter,
-  onMaxValueChange,
-  onCategoryChange,
-}: FiltersProps) {
+export function Filters() {
+  const { filter, updateCategory, updateMaxValue } = useFilter();
+
   return (
     <div className="filters">
-      <MaxPriceFilter onChange={onMaxValueChange} value={filter.max} />
-      <CategoryFilter onChange={onCategoryChange} />
+      <MaxPriceFilter onChange={updateMaxValue} value={filter.max} />
+      <CategoryFilter onChange={updateCategory} />
     </div>
   );
 }

@@ -1,25 +1,17 @@
-import "./App.css";
 import { Products } from "./components/Products";
+import "./styles/App.css";
 
 import { Filters } from "./components/Filters";
-import { useFilter } from "./hooks/useFilter";
 
 function App() {
-  const { filter, updateCategory, updateMaxValue } = useFilter();
-
   return (
     <>
       <header>
         <h1>Shopping Cart 🛒</h1>
-
-        <Filters
-          filter={filter}
-          onMaxValueChange={updateMaxValue}
-          onCategoryChange={updateCategory}
-        />
+        <Filters />
       </header>
       <main>
-        <Products filter={filter} />
+        <Products />
       </main>
     </>
   );
