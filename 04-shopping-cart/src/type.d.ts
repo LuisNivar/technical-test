@@ -17,6 +17,8 @@ export type FiltersProps = {
   onCategoryChange: (value: string) => void;
 };
 
+export type CartItemType = ProductType & { quantity: number };
+
 export type AddToCart = {
   type: "Add";
   product: ProductType;
@@ -36,4 +38,14 @@ export type UpdateQuantity = {
   id: number;
 };
 
-export type ActionType = AddToCart | RemoveItem | ClearCart | UpdateQuantity;
+export type Load = {
+  type: "Load";
+  items: CartItemType[];
+};
+
+export type ActionType =
+  | AddToCart
+  | RemoveItem
+  | ClearCart
+  | UpdateQuantity
+  | Load;

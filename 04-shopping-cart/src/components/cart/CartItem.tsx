@@ -1,4 +1,4 @@
-import { CartItemType } from ".";
+import { CartItemType } from "../../type";
 
 export type CartItemProps = CartItemType & {
   onUpdateQuantity: (id: number) => void;
