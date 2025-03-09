@@ -1,8 +1,6 @@
 import { useCartContext } from "../../hooks/useCartContext";
-import { ProductType } from "../../type";
 import { CartItem } from "./CartItem";
 
-export type CartItemType = ProductType & { quantity: number };
 export function Cart() {
   const { state, dispatch } = useCartContext();
 

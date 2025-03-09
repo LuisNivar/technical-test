@@ -1,6 +1,5 @@
 import { createContext } from "react";
-import { ActionType } from "../type";
-import { CartItemType } from "../components/cart";
+import { ActionType, CartItemType } from "../type";
 
 export const CartContext = createContext<CartItemType[]>([]);
 
@@ -35,6 +34,9 @@ export function reducer(state: CartItemType[], payload: ActionType) {
       newItem[itemIndex].quantity += 1;
 
       return newItem;
+    }
+    case "Load": {
+      return payload.items;
     }
   }
 }

@@ -1,6 +1,6 @@
 import { PropsWithChildren, useReducer } from "react";
-import { CartItemType } from "../components/cart";
 import { CartContext, CartDispatchContext, reducer } from "./cartContext";
+import { CartItemType } from "../type";
 
 const INITIAL_CART_STATE: CartItemType[] = [];
 
