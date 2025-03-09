@@ -1,3 +1,4 @@
+import { useCartContext } from "../hooks/useCartContext";
 import { useFilterContext } from "../hooks/useFilterContext";
 import { useProduct } from "../hooks/useProducts";
 import "../styles/products.css";
@@ -24,11 +25,33 @@ type ListOfProductsProps = {
 };
 
 function ListOfProducts({ products }: ListOfProductsProps) {
+  const { dispatch } = useCartContext();
+
+  const handleAdd = (product: ProductType) => {
+    dispatch({
+      type: "Add",
+      product,
+    });
+  };
+
+  const handleRemove = (id: number) => {
+    dispatch({
+      type: "Remove",
+      id,
+    });
+  };
+
   return (
     <ul className="products">
       {products.map((product) => {
-        const { id, title, image, price } = product;
-        return <Item key={id} title={title} image={image} price={price} />;
+        return (
+          <Item
+            key={product.id}
+            onAdd={handleAdd}
+            onRemove={handleRemove}
+            product={product}
+          />
+        );
       })}
     </ul>
   );
