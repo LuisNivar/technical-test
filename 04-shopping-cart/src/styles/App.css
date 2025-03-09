@@ -5,8 +5,62 @@
   text-align: center;
 }
 
-.main {
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+main {
   display: flex;
+  align-items: start;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.cart {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
   flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  width: 150px;
+}
+
+.cart h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.cart-list {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  font-size: small;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: solid 1px #444;
+}
+
+.cart-item img {
+  width: 50px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.cart-item > span,
+.cart span {
+  display: flex;
+  gap: 8px;
   align-items: center;
 }
