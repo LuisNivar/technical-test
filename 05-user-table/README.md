@@ -6,11 +6,11 @@ El objetivo de esta prueba técnica es crear una aplicación similar a la que se
 
 ### Ruirements:
 
-- [ ] Fetch 100 rows of data using the API.
+- [x] Fetch 100 rows of data using the API.
 
-- [ ] Display the data in a table format, similar to the example.
+- [x] Display the data in a table format, similar to the example.
 
-- [ ] Provide the option to color rows as shown in the example.
+- [x] Provide the option to color rows as shown in the example.
 
 - [ ] Allow the data to be sorted by country as demonstrated in the example.
 
