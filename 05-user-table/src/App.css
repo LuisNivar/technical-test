@@ -39,5 +39,5 @@ tr.colored:nth-child(odd) {
 tr:hover,
 tr.colored:nth-child(odd):hover,
 tr.colored:nth-child(even):hover {
-  background-color: teal;
+  background-color: #646cff;
 }
