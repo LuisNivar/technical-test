@@ -24,4 +24,4 @@ El objetivo de esta prueba técnica es crear una aplicación similar a la que se
 
 - [x] Avoid sorting users again the data when the user is changing filter by country.
 
-- [ ] Sort by clicking on the column header
+- [x] Sort by clicking on the column header
