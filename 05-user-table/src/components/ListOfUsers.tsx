@@ -3,9 +3,10 @@ import { User } from "../types";
 type Props = {
   users: User[];
   colored: boolean;
+  onDelete: (email: string) => void;
 };
 
-export function ListOfUsers({ users, colored }: Props) {
+export function ListOfUsers({ users, colored, onDelete }: Props) {
   return (
     <table>
       <thead>
@@ -30,7 +31,7 @@ export function ListOfUsers({ users, colored }: Props) {
             <td>{user.name.last}</td>
             <td>{user.location.country}</td>
             <td>
-              <button>🗑️</button>
+              <button onClick={() => onDelete(user.email)}>🗑️</button>
             </td>
           </tr>
         ))}
