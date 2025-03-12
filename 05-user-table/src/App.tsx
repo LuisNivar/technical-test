@@ -8,6 +8,7 @@ function App() {
   const [users, setUsers] = useState<User[]>([]);
   const [colored, setColored] = useState(false);
   const [sortedByCountry, setSortedByCountry] = useState(false);
+  const [filterCountry, setFilterCountry] = useState<string | null>(null);
   const initialUsers = useRef<User[]>([]);
 
   useEffect(() => {
@@ -37,11 +38,22 @@ function App() {
     setUsers(initialUsers.current);
   };
 
-  const sortedUser = sortedByCountry
-    ? [...users].sort((a, b) =>
-        a.location.country.localeCompare(b.location.country)
+  const isAvaibleFilter =
+    typeof filterCountry === "string" && filterCountry.length > 0;
+
+  const filteredUser = isAvaibleFilter
+    ? users.filter((user) =>
+        user.location.country
+          .toLowerCase()
+          .includes(filterCountry.toLowerCase())
       )
     : users;
+
+  const sortedUser = sortedByCountry
+    ? [...filteredUser].sort((a, b) =>
+        a.location.country.localeCompare(b.location.country)
+      )
+    : filteredUser;
 
   return (
     <>
@@ -56,8 +68,14 @@ function App() {
           <button onClick={() => handleSort()}>
             {sortedByCountry ? "Restore order" : "Sort by Country"}
           </button>
-          {/* Rest state */}
+          {/* Reset state */}
           <button onClick={() => handleReset()}>Reset State</button>
+          {/* Filter by coutry */}
+          <input
+            type="text"
+            placeholder="Mexico"
+            onChange={(e) => setFilterCountry(e.target.value)}
+          />
         </span>
       </header>
       <main>
