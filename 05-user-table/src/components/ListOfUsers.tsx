@@ -1,20 +1,21 @@
-import { User } from "../types";
+import { SortBy, User } from "../types";
 
 type Props = {
   users: User[];
   colored: boolean;
   onDelete: (email: string) => void;
+  onChangeSort: (sort: SortBy) => void;
 };
 
-export function ListOfUsers({ users, colored, onDelete }: Props) {
+export function ListOfUsers({ users, colored, onDelete, onChangeSort }: Props) {
   return (
     <table>
       <thead>
         <tr>
           <th>Photo</th>
-          <th>Name</th>
-          <th>Last Name</th>
-          <th>Country</th>
+          <th onClick={() => onChangeSort(SortBy.NAME)}>Name</th>
+          <th onClick={() => onChangeSort(SortBy.LAST)}>Last Name</th>
+          <th onClick={() => onChangeSort(SortBy.COUNTRY)}>Country</th>
           <th>Actions</th>
         </tr>
       </thead>
