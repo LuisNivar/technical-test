@@ -16,22 +16,32 @@ function App() {
       .then((data) => {
         setUsers(data.results);
         initialUsers.current = data.results;
-      });
+      })
+      .catch((error) => console.error(error));
   }, []);
 
   const toggleColor = () => {
     setColored(!colored);
   };
 
+  const handleDelete = (email: string) => {
+    const newUsers = users.filter((user) => user.email !== email);
+    setUsers(newUsers);
+  };
+
   const handleSort = () => {
     setSortedByCountry((prev) => !prev);
+  };
+
+  const handleReset = () => {
+    setUsers(initialUsers.current);
   };
 
   const sortedUser = sortedByCountry
     ? [...users].sort((a, b) =>
         a.location.country.localeCompare(b.location.country)
       )
-    : initialUsers.current;
+    : users;
 
   return (
     <>
@@ -46,10 +56,16 @@ function App() {
           <button onClick={() => handleSort()}>
             {sortedByCountry ? "Restore order" : "Sort by Country"}
           </button>
+          {/* Rest state */}
+          <button onClick={() => handleReset()}>Reset State</button>
         </span>
       </header>
       <main>
-        <ListOfUsers colored={colored} users={sortedUser} />
+        <ListOfUsers
+          colored={colored}
+          users={sortedUser}
+          onDelete={handleDelete}
+        />
       </main>
     </>
   );
