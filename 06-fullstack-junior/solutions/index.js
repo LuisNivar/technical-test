@@ -62,3 +62,22 @@ export async function procesarArchivoPromise() {
     throw new Error(e);
   });
 }
+
+//4
+export async function leerArchivos() {
+  //console.time("Exercise 4 | Runtime");
+
+  const [archivo1, archivo2, archivo3] = await Promise.allSettled([
+    fs.promises.readFile("file1.txt", "utf8"),
+    fs.promises.readFile("file2.txt", "utf8"),
+    fs.promises.readFile("file3.txt", "utf8"),
+  ]);
+
+  const message = [archivo1.value, archivo2.value, archivo3.value]
+    .filter((value) => typeof value !== "undefined")
+    .join(" ");
+
+  //console.timeEnd("Exercise 4 | Runtime");
+
+  return message;
+}
