@@ -1,4 +1,5 @@
 import { procesarArchivo } from "../solutions/index.js";
+import { procesarArchivoPromise } from "../solutions/index.js";
 
 import { equal, ifError } from "node:assert/strict";
 import { unlinkSync, writeFileSync } from "node:fs";
@@ -25,10 +26,10 @@ describe("3. procesarArchivoPromise", () => {
     });
   });
 
-  // it('3.1. procesarArchivoPromise', async () => {
-  //   writeFileSync('input.txt', 'hola')
-  //   await procesarArchivoPromise()
-  //   const contenido = await readFile('output.txt', 'utf8')
-  //   equal(contenido, 'HOLA')
-  // })
+  it("3.1. procesarArchivoPromise", async () => {
+    writeFileSync("input.txt", "hola");
+    await procesarArchivoPromise();
+    const contenido = await readFile("output.txt", "utf8");
+    equal(contenido, "HOLA");
+  });
 });
