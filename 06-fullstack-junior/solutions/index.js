@@ -13,3 +13,9 @@ export const ping = (ip, callback) => {
     throw err;
   });
 };
+
+export function obtenerDatosPromise() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve({ data: "datos importantes" }), 200);
+  });
+}
