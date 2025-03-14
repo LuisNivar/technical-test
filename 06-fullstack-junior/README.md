@@ -2,7 +2,7 @@
 
 Escribe las soluciones en el archivo solutions/index.js manteniendo el nombre de las funciones y sus export. Usa ESModules en tu proyecto de Node.js
 
-## 1 - Arregla esta función para que el código posterior funcione como se espera:
+## ✅ 1 - Arregla esta función para que el código posterior funcione como se espera:
 
 ```javascript
 import net from "node:net";
@@ -27,43 +27,44 @@ ping("midu.dev", (err, info) => {
 });
 ```
 
-## 2 - Transforma la siguiente función para que funcione con promesas en lugar de callbacks:
+## ✅ 2 - Transforma la siguiente función para que funcione con promesas en lugar de callbacks:
 
 ```javascript
 export function obtenerDatosPromise(callback) {
   setTimeout(() => {
-    callback(null, { data: 'datos importantes' });
+    callback(null, { data: "datos importantes" });
   }, 2000);
 }
-3 - Explica qué hace la funcion. Identifica y corrige los errores en el siguiente código. Si ves algo innecesario, elimínalo. Luego mejoralo para que siga funcionando con callback y luego haz lo que consideres para mejorar su legibilidad.
+```
 
+## 3 - ✅ Explica qué hace la funcion. Identifica y corrige los errores en el siguiente código. Si ves algo innecesario, elimínalo. Luego mejoralo para que siga funcionando con callback y luego haz lo que consideres para mejorar su legibilidad.
+
+```javascript
 export function procesarArchivo() {
-  fs.readFile('input.txt', 'utf8', (error, contenido) => {
+  fs.readFile("input.txt", "utf8", (error, contenido) => {
     if (error) {
-      console.error('Error leyendo archivo:', error.message);
+      console.error("Error leyendo archivo:", error.message);
       return false;
     }
 
     setTimeout(() => {
       const textoProcesado = contenido.toUpperCase();
 
-      fs.writeFile('output.txt', textoProcesado, error => {
+      fs.writeFile("output.txt", textoProcesado, (error) => {
         if (error) {
-          console.error('Error guardando archivo:', error.message);
+          console.error("Error guardando archivo:", error.message);
           return false;
         }
 
-        console.log('Archivo procesado y guardado con éxito');
-        return true
+        console.log("Archivo procesado y guardado con éxito");
+        return true;
       });
-
     }, 1000);
   });
 }
-
 ```
 
-## 4 - ¿Cómo mejorarías el siguiente código y por qué? Arregla los tests si es necesario:
+## 4 - ✅ ¿Cómo mejorarías el siguiente código y por qué? Arregla los tests si es necesario:
 
 ```javascript
 import fs from "node:fs";
@@ -79,26 +80,30 @@ export function leerArchivos() {
 leerArchivos();
 ```
 
-# 5 - Escribe una funcion delay que retorne una promesa que se resuelva después de n milisegundos. Por ejemplo:
+# 5 ✅ - Escribe una funcion delay que retorne una promesa que se resuelva después de n milisegundos. Por ejemplo:
 
 ```javascript
-export async function delay () {
+export async function delay() {
   // ...
 }
 
-delay(3000).then(() => console.log('Hola mundo'));
+delay(3000).then(() => console.log("Hola mundo"));
 // o..
-await delay(3000)
-console.log('Hola mundo')
-Vamos a crear nuestra propia utilidad dotenv en el archivo dotenv.js.
+await delay(3000);
+console.log("Hola mundo");
+```
+
+## 7- Vamos a crear nuestra propia utilidad dotenv en el archivo dotenv.js.
+
 La utilidad debe devolver un método config que lee el archivo .env y añade las variables de entorno que haya en el archivo al objeto process.env.
 
 Por ejemplo si tu archivo .env contiene:
 
-PORT=8080
-TOKEN="123abc"
+`PORT=8080`
+`TOKEN="123abc"`
 Entonces podríamos hacer esto:
 
+```javascript
 const dotenv = require("./dotenv.js");
 dotenv.config()
 

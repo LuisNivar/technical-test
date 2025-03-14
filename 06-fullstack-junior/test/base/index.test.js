@@ -4,7 +4,7 @@ import {
   procesarArchivoPromise,
   procesarArchivo,
   leerArchivos,
-} from "../solutions/index.js";
+} from "../../solutions/index.js";
 
 import { describe, it, beforeEach, afterEach } from "node:test";
 import { equal, ifError } from "node:assert/strict";

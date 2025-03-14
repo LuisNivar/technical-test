@@ -2,7 +2,7 @@ import { describe, it, after } from "node:test";
 import { equal, deepStrictEqual } from "node:assert/strict";
 import request from "supertest";
 
-import { app, server } from "../solutions/server.js";
+import { app, server } from "../../solutions/server.js";
 
 describe("Items Routes", () => {
   let itemId = null;
