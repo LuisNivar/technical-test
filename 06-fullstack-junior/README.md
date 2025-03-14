@@ -2,7 +2,7 @@
 
 Escribe las soluciones en el archivo solutions/index.js manteniendo el nombre de las funciones y sus export. Usa ESModules en tu proyecto de Node.js
 
-## 1 - Arregla esta función para que el código posterior funcione como se espera:
+## ✅ 1 - Arregla esta función para que el código posterior funcione como se espera:
 
 ```javascript
 import net from "node:net";
@@ -32,35 +32,36 @@ ping("midu.dev", (err, info) => {
 ```javascript
 export function obtenerDatosPromise(callback) {
   setTimeout(() => {
-    callback(null, { data: 'datos importantes' });
+    callback(null, { data: "datos importantes" });
   }, 2000);
 }
-3 - Explica qué hace la funcion. Identifica y corrige los errores en el siguiente código. Si ves algo innecesario, elimínalo. Luego mejoralo para que siga funcionando con callback y luego haz lo que consideres para mejorar su legibilidad.
+```
 
+## 3 - Explica qué hace la funcion. Identifica y corrige los errores en el siguiente código. Si ves algo innecesario, elimínalo. Luego mejoralo para que siga funcionando con callback y luego haz lo que consideres para mejorar su legibilidad.
+
+```javascript
 export function procesarArchivo() {
-  fs.readFile('input.txt', 'utf8', (error, contenido) => {
+  fs.readFile("input.txt", "utf8", (error, contenido) => {
     if (error) {
-      console.error('Error leyendo archivo:', error.message);
+      console.error("Error leyendo archivo:", error.message);
       return false;
     }
 
     setTimeout(() => {
       const textoProcesado = contenido.toUpperCase();
 
-      fs.writeFile('output.txt', textoProcesado, error => {
+      fs.writeFile("output.txt", textoProcesado, (error) => {
         if (error) {
-          console.error('Error guardando archivo:', error.message);
+          console.error("Error guardando archivo:", error.message);
           return false;
         }
 
-        console.log('Archivo procesado y guardado con éxito');
-        return true
+        console.log("Archivo procesado y guardado con éxito");
+        return true;
       });
-
     }, 1000);
   });
 }
-
 ```
 
 ## 4 - ¿Cómo mejorarías el siguiente código y por qué? Arregla los tests si es necesario:
