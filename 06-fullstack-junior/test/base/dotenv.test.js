@@ -2,24 +2,28 @@ import { describe, it, beforeEach, afterEach } from "node:test";
 import { equal } from "node:assert/strict";
 import { unlinkSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
-import { config } from "../solutions/dotenv.js";
+import { config } from "../../solutions/dotenv.js";
 
 describe("1. dotenv", () => {
   beforeEach(() => {
     // clean process.env
-    for (const key of Object.keys(process.env)) {
-      delete process.env[key];
+    for (const key of Object.keys(globalThis.process.env)) {
+      delete globalThis.process.env[key];
     }
   });
 
   afterEach(() => {
     try {
       unlinkSync(".env");
-    } catch {}
+    } catch {
+      /* empty */
+    }
 
     try {
       unlinkSync("./test/.env.local");
-    } catch {}
+    } catch {
+      /* empty */
+    }
   });
 
   it("1.1. load .env file", () => {
@@ -27,8 +31,8 @@ describe("1. dotenv", () => {
     writeFileSync(".env", 'PORT=3000\nTOKEN="123abc"');
     config();
 
-    equal(process.env.PORT, "3000");
-    equal(process.env.TOKEN, "123abc");
+    equal(globalThis.process.env.PORT, "3000");
+    equal(globalThis.process.env.TOKEN, "123abc");
   });
 
   it("1.2. load .env file from custom path", () => {
@@ -36,13 +40,13 @@ describe("1. dotenv", () => {
     writeFileSync("./test/.env.local", 'PORT=3000\nTOKEN="123abc"');
     config({ path: "./test/.env.local" });
 
-    equal(process.env.PORT, "3000");
-    equal(process.env.TOKEN, "123abc");
+    equal(globalThis.process.env.PORT, "3000");
+    equal(globalThis.process.env.TOKEN, "123abc");
   });
 
   it("1.3 it works even without .env file", () => {
     config();
-    equal(process.env.TOKEN, undefined);
+    equal(globalThis.process.env.TOKEN, undefined);
   });
 
   it("1.4 dont use dotenv dependency", () => {
