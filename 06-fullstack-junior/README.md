@@ -80,26 +80,30 @@ export function leerArchivos() {
 leerArchivos();
 ```
 
-# 5 - Escribe una funcion delay que retorne una promesa que se resuelva después de n milisegundos. Por ejemplo:
+# 5 ✅ - Escribe una funcion delay que retorne una promesa que se resuelva después de n milisegundos. Por ejemplo:
 
 ```javascript
-export async function delay () {
+export async function delay() {
   // ...
 }
 
-delay(3000).then(() => console.log('Hola mundo'));
+delay(3000).then(() => console.log("Hola mundo"));
 // o..
-await delay(3000)
-console.log('Hola mundo')
-Vamos a crear nuestra propia utilidad dotenv en el archivo dotenv.js.
+await delay(3000);
+console.log("Hola mundo");
+```
+
+## 7- Vamos a crear nuestra propia utilidad dotenv en el archivo dotenv.js.
+
 La utilidad debe devolver un método config que lee el archivo .env y añade las variables de entorno que haya en el archivo al objeto process.env.
 
 Por ejemplo si tu archivo .env contiene:
 
-PORT=8080
-TOKEN="123abc"
+`PORT=8080`
+`TOKEN="123abc"`
 Entonces podríamos hacer esto:
 
+```javascript
 const dotenv = require("./dotenv.js");
 dotenv.config()
 
