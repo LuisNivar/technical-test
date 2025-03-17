@@ -128,7 +128,7 @@ dotenv.config("./config/.env.local")
 - Las variables de entorno siempre son strings, por lo que si en el archivo .env hay un número, por ejemplo `PORT=8080`, al leerlo con fs y añadirlo a process.env debe ser un string, no un número.
   process.env es un objeto y, por lo tanto, es mutable. Esto significa que podemos añadir propiedades nuevas sin problemas.
 
-## 7 - Diseña una API REST utilizando Express que permite a los usuarios crear, leer, modificar, actualizar y eliminar elementos de una lista.
+## 7 ✅ - Diseña una API REST utilizando Express que permite a los usuarios crear, leer, modificar, actualizar y eliminar elementos de una lista.
 
 La lista tendrá objetos que tienen la siguiente forma:
 
